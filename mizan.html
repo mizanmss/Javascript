@@ -1,0 +1,49 @@
+/*undefined and windows*/
+/*<html>
+<head>
+</head>
+<body>
+<script>
+for(x in window){
+console.log(x);
+}
+window.alert(window);
+var greeting ='hello';
+alert(window.greeting);
+var greeting="hello";
+alert(windows.greeting);
+
+alert("hello")'
+</script>
+</body>
+</html>
+*/
+/*Namespace=code organization
+class=template
+object=actual goal */
+object : properties + methods or behaviour  
+object : object define ; 
+1. var car = new Object();*/
+<html>
+<head>
+</head>
+<body>
+<script>
+var car = new Object();
+car.name='fiate';
+car.model=500;
+car.color='red';
+car.drive=function()
+{
+alert('i m driving');
+return 'hello world';
+}
+for(x in car){
+console.log('properties:'+ x);
+console.log('value:'+ eval('car.'+ x));
+}
+console.log(car['name']);
+console.log(car['drive]()))
+</script>
+</body>
+</html>
