@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var car = new Object();
+car.name='fiate';
+car.model=500;
+car.color='red';
+car.drive=function()
+{
+alert('i m driving');
+}
+for(x in car){
+document.write('properties:'+ x);
+document.write('value:'+ eval('car.'+ x));
+}
+</script>
+</body>
+</html>
