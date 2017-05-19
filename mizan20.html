@@ -1,0 +1,47 @@
+<html>
+<head>
+<title > this function call , apply , bind    </title>
+</head>
+<body>
+<script type="text/javascript">
+var person = {
+    firstname="mizanur",
+    lastname="rahman",
+    fullname:function(){
+    console.log(this.firstname+" "+this.lastname);
+}
+}
+person.fullname();
+another person(){
+firstname: "tom",
+lastname:"carry"
+}
+
+yetanother person(){
+firstname: "tom",
+lastname:"carry"
+}
+
+person.fullname.call(anotherperson);
+person.fullname.apply(yetanotherperson);
+
+person.fullname.call(anotherperson,30,6);// argument call 
+person.fullname.apply(yetanotherperson,[32,8]); // argument call 
+
+c=5;
+function add(a,b){
+return a+b+this.c;
+
+}
+
+var o={c:45}
+var o2={c:450}
+console.log(add.call(o,3,4));
+console.log(add.apply(o,3,4));
+//bind 
+var myfunc=add.bind(o2,3,4);
+console.log(nyfunc());
+
+</script>
+</body>
+</html>
