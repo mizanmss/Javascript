@@ -1,23 +1,34 @@
-//object literal
+<!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
-<script>
-var car ={
-'name':'fiat',
-'color' : 'Red',
-'model' : '500',
-'drive' : function(){
-alert('i m driving');
-return 'hello mizan';
-},
-'stop':function(){
-alert('stoping the car)
-}
+	</head>
+
+<body class="normal">
+<p id="paragraph"> This is a paragraph </p>
+	<table id="table">
+	<tr>
+		<td><img src="C:\Users\Acer\Desktop\Mohammad-Woaliullah-Olee.jpg"></td>
+</tr>
+	<script type="text/javascript"> 
+	//var p =document.getElementById("paragraph");
+	//p.onclick=function(){
+		//this.style.background="#0000FF";
+	//}
+//var p=document.getElementById('paragraph');
+//var fn=function(){this.style.background="#0000FF";};
+//var fn1=function(){alert("Hello World");
+//p.removeEventListener("click", fn1);
+//};
+//p.addEventListener("click",fn);
+//p.addEventListener("click",fn1);
+var tb=function(ta){
+	if(ta.target.src){
+		ta.target.src="C:\Users\Acer\Desktop\Mohammad-Woaliullah-Olee2.jpg";
+	}
 };
-console.log(car.seat.color);
-console.log(typeof car);
+document.getElementById("table").addEventListener("click",tb);
 </script>
+
 </body>
 </html>
+

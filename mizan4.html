@@ -1,27 +1,28 @@
-//JSON and object literal 
+
+<!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
-<script>
-var car ={
-'name':'fiat',
-'color' : 'Red',
-'model' : '500',
-'seat':{
-'color':'white',
-'totalseat':4,
-'seatnumbers':['A1','A2','B1','B2']}
-'drive' : function(){
-alert('i m driving');
-return 'hello mizan';
-},
-'stop':function(){
-alert('stoping the car)
-}
-};
-console.log(car.seat.color);
-console.log(typeof car);
+	</head>
+
+<body class="normal">
+<p id="pid" class ="pclass" name ="pname"> This is a paragraph </p>
+<script type="text/javascript">
+var paragraph=document.getElementById('pid');
+//getAttribute
+document.write(paragraph.getAttribute('id'));
+document.write("<br>");
+//setAttribute
+paragraph.setAttribute("id","newid");
+document.write(paragraph.getAttribute('id'));
+//removeAttribute
+document.write("<br>");
+document.write(paragraph.getAttribute('class'));
+paragraph.removeAttribute("class");
+document.write("<br>");
+document.write(paragraph.getAttribute('class'));
+
 </script>
+
 </body>
 </html>
+
