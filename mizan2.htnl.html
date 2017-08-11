@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	</head>
+
+<body class="normal">
+<p id="paragraph"> This is a paragraph </p>
+	<script type="text/javascript"> 
+	//var p =document.getElementById("paragraph");
+	//p.onclick=function(){
+		//this.style.background="#0000FF";
+	//}
+var p=document.getElementById('paragraph');
+var fn=function(){this.style.background="#0000FF";};
+var fn1=function(){alert("Hello World");
+p.removeEventListener("click", fn1);
+};
+p.addEventListener("click",fn);
+p.addEventListener("click",fn1);
+
+
+</script>
+
+</body>
+</html>
+
