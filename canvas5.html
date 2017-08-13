@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+</body>
+<canvas id="mycanvas" width="200" height="100" >
+</canvas>
+<button onclick="Start(this)" >Start
+</button>
+<button onclick="Close(this)" >Close
+</button>
+<script type="text/javascript">
+	
+	var canvas = document.getElementById("mycanvas");
+	var ctx = canvas.getContext("2d");
+	canvas.addEventListener('mouseup', function(evt) {
+	var mousePos = getMousePos(canvas, evt);
+	console.log(mousePos.x + ',' + mousePos.y);
+	ctx.lineTo(mousePos.x, mousePos.y);
+	ctx.stroke();
+	}, false);
+
+	function getMousePos(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+	var pos = {
+	x: evt.clientX - rect.left,
+	y: evt.clientY - rect.top
+	};
+	return pos;
+	}
+	//ctx.moveTo(0,0);
+	//ctx.lineTo(200,100);
+	//ctx.stroke();
+
+	function clear(el){
+	ctx.clearRect(0,0,100,100)
+	}
+
+</script>
+</body>
+</html>
+
