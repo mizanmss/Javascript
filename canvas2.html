@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+</body>
+<canvas id="mycanvas" width="200" height="100" >
+</canvas>
+<button onclick="clickon(this)" >clickon
+</button>
+<button onclick="clickStroke(this)" >clickStroke
+</button>
+<script type="text/javascript">
+	
+	var canvas = document.getElementById("mycanvas");
+	var ctx = canvas.getContext("2d");
+	//ctx.moveTo(0,0);
+	//ctx.lineTo(200,100);
+	ctx.stroke();
+	ctx.beginPath();
+
+	function clickon(el){
+	ctx.clearRect(0,0,100,100)
+	}
+function clickStroke(el){
+	ctx.arc(100,75,50,0, 2*Math.PI);
+	ctx.fillStyle="#FF0000";
+	ctx.fill();
+		}
+</script>
+</body>
+</html>
+
