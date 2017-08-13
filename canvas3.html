@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick="Resize1();" >Resize</button>
+
+<p>Image to use:</p>
+
+<img id="image1" width="220" height="277"
+src="/home/munir/Desktop/20170324_103908.jpg" alt="The Scream">
+
+<p>Canvas:</p>
+
+<canvas id="myCanvas" width="200" height="200"
+style="border:1px solid #d3d3d3 ;">
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+   var ctx = canvas.getContext("2d");
+   var img = document.getElementById("image1");
+   window.onload = function() {
+   
+  	ctx.drawImage(img, 10, 10);
+  
+  function Resize1(){
+  	alert("200");
+	ctx.drawImage(img,10,10,100,100);
+	}
+};
+
+</script>
+
+<style type="text/css">#image1{display: none}</style>
+
+</body>
+</html>
