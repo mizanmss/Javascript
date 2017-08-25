@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>JS Bin</title>
+</head>
+<body>
+<form name= "myform"action="javascript:showform()">
+	
+<label for="volume">volume</label>
+ <input type="text" name="volume" id="volume"><br>
+
+ <input type="submit" name="calculator" id="submit"><br>
+
+</form>
+
+<script>
+function volumn_sphere()
+{
+	var volume;
+	var radius = document.getElementBYId(radius).value;
+	radius=Math.abs(radius);
+	volume=(4/3)*Math.PI*Math.pow(radius,3);
+	volume=volume.toFixed(4);
+	document.getElementBYId('volume').value=volume;
+	return false;
+}
+</script>
+
+
+</html>

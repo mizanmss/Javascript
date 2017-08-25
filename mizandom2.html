@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>JS Bin</title>
+</head>
+<body>
+<form name= "myform"action="javascript:showform()">
+	
+<label for="First_name">First Name</label>
+ <input type="label" name="First_name" value=""><br>
+
+<label for="last_name">First Name</label>
+ <input type="label" name="last_name" value=""><br>
+ <p align="right">
+  <button type="Save">Save</button>
+
+</p>
+</form>
+<script>
+function  showform(){
+	var a = document.myform.First_name.value;
+	var b = document.myform.last_name.value;
+	//console.log(a);
+	//console.log(b);
+	alert(a);
+	alert(b);
+}
+</script>
+
+
+</html>

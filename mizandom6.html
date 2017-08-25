@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	</head>
+<body>
+<table id="myTable">
+<tr>
+	<td>cell1</td>
+	<td>cell2</td>
+	</tr>
+	<tr>
+	<td>cell3</td>
+	<td>cell4</td>
+	</tr>
+	<tr>
+	<td>cell5</td>
+	<td>cell6</td>
+</tr>
+	</table>
+	<form>
+		<input type="button" onclick = "myFunction()" value="insert row"
+	</form>
+</body>
+<script>
+function myFunction() {
+    var table = document.getElementById("myTable");
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    cell1.innerHTML = "NEW CELL1";
+    cell2.innerHTML = "NEW CELL2";
+}
+</script>
+</html>

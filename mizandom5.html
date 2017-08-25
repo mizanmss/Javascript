@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	</head>
+<body>
+<table>
+<tr>
+	<td>mizan</td>
+	<td>mizan</td>
+	</tr>
+	<tr>
+	<td>mizan</td>
+	<td>mizan</td>
+	</tr>
+	<tr>
+	<td>mizan</td>
+	<td>mizan</td>
+</tr>
+	</table>
+	<form>
+		<input type="button" onclick = "changecontent()" value="Change Content"
+	</form>
+</body>
+<script>
+function changecontent(){
+	rn=window.prompt("Input the row number(0,1,2)","0");
+	cn=window.prompt("Input the col number(0,1)","0");
+	content= window.prompt("Input the cell number(,1,2)","0");
+	var x = document.getElementById('myTable').row[parseInt(rn,10)].cells;
+	x[parseInt(cn,10)].innerHTML=content;
+	
+}
+</script>
+</html>
