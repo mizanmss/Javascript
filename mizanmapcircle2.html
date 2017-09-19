@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Google Map</h1>
+
+<div id="googleMap" style="width:100%;height:400px;"></div>
+
+<script>
+
+function myMap() {
+	var point1 =new google.maps.LatLng(23.811987, 90.404207);
+var mapProp= {
+    center:point1,
+    zoom:12,
+};
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+//showing Marker Icon
+/*var marker = new google.maps.Marker({
+	position:new google.maps.LatLng(23.811987, 90.404207),
+	map:map
+});*/
+//showing Marker Icon
+var marker = new google.maps.Marker({position:point1});
+marker.setMap(map);
+
+//Showing Circle area
+new google.maps.Circle({
+    strokeColor: "black",
+    strokeOpacity: 1,
+    strokeWeight: 1,
+    fillColor: "red",
+    fillOpacity: 0.2,
+    map: map,
+    center: point1,
+    radius: 10*100
+});
+//click event as google addListener
+google.maps.event.addListener(map,'click', mapClicked);
+
+
+/function mapClicked(ev){
+    //alert(ev.latLng.lat());
+    var mark = new google.maps.Marker({
+        position: ev.latLng,
+        map:map
+    });
+    new google.maps.Circle({
+    strokeColor: "black",
+    strokeOpacity: 1,
+    strokeWeight: 1,
+    fillColor: "red",
+    fillOpacity: 0.2,
+    map: map,
+    center: ev.latLng,
+    radius: 10*100
+});
+
+google.maps.event.addListener(map,'click', function(e){
+
+    var infoWin = new google.maps.InfoWindow();
+    infoWin.setConten(
+        "lat:"
+        +e.latLng()
+        +"</br>"
+        + "Lng :"
+        + e.LatLng.lng());
+    infoWin.setPosition(e.latLng);
+    infoWin.open(map);
+});
+
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBET8aQAh1saPO81DfkqH036y9_BxkksPo&callback=myMap"></script>
+
+</body>
+</html>
