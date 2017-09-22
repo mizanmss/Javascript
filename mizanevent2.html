@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Understanding js Event</title>
+	<style>
+	div {
+		background-color: green;
+		padding: 4px;
+	}
+	p {
+		background-color: yellow;
+		padding: 4px;
+	}
+	</style>
+	</head>
+
+<body>
+<!-- <div onclick ="alert('i m kamal')">
+<p onclick ="alert('i m jamak')">
+	<button type ="button" onclick="alert('i m btn')">Click me </button>
+</p>
+</div> -->
+<div id="idDIV">
+<p id="idP">
+	<button type ="button" id="idBTN">Click me </button>
+</p>
+</div>
+<a href ="javascript:ask()">Click here </a> to go to yahoo.
+
+<a id="idGoogle" href ="a">Click here </a> to go to yahoo.
+<script>
+
+function ask(){
+	var confirmation=confirm('do you to leave');
+	console.log(confirmation);
+		if(confirmation){
+			document.location="http://google.com";
+		}
+		
+}
+
+var a = document.getElementById("idGoogle");
+a.addEventListener('click',ask,false);
+
+function showalert(){
+	alert("i m div");
+}
+var div=document.getElementById("idDIV");
+div.addEventListener('click',function(){alert("i m div")},false);
+
+var p=document.getElementById("idP");
+p.addEventListener('click',function(){alert("i m P")},false);
+
+var btn=document.getElementById("idBTN");
+btn.addEventListener('click',function(){alert("i m BTN")},false);
+
+
+</script>
+</body>
+</html>
