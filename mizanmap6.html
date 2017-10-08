@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <style type="text/css">
+       #googleMap{
+           width: 1000px;
+           height: 600px;
+       }
+   </style>
+</head>
+<body>
+
+<h1>My First Google Map</h1>
+
+<div id="googleMap"></div>
+<script type="text/javascript" src="jquery.js"></script>
+<script>
+
+var dhaka;
+var prevPoint;
+
+var paths = [];
+
+var points = [
+    {lat : 21.647778, lng : 92.307806},
+    {lat : 21.696396, lng : 92.251854},
+    {lat : 22.501483, lng : 90.715162}
+]
+
+var myMap;
+
+var directionsService;
+var directionsRenderer;
+
+function showMap() {
+    dhaka = new google.maps.LatLng(23.8103, 90.4125);
+   directionsService = new google.maps.DirectionsService();
+   directionsRenderer = new google.maps.DirectionsRenderer();
+
+   var mapProp= {
+       center: dhaka,
+       zoom:15,
+       //mapTypeId: google.maps.MapTypeId.HYBRID
+   };
+   myMap = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+   directionsRenderer.setMap(myMap);
+
+   for (var i = 0; i <  points.length; i++) {
+       new google.maps.Marker({
+         position: new google.maps.LatLng(points[i]),
+         map: myMap
+         });
+
+       new google.maps.Circle({
+           strokeColor : "#00BB00 ",
+           strokeOpacity : 0.2,
+           strokeWeight : 0.5,
+           fillColor : "#00BB00 ",
+           fillOpacity : 0.1,
+           map : myMap,
+           center : points[i],
+           radius : 10 *1000
+       });
+   }
+
+   google.maps.event.addListener(myMap, 'click', mapClicked);
+}
+
+function mapClicked(ev){
+
+    paths.push(ev.latLng);
+    /*alert("Total :" + google.maps.geometry.spherical.computeLength(paths)/1000 + " Km");
+    alert("Area :" + google.maps.geometry.spherical.computeArea(paths)/1000 + " Km");
+*/
+    var mark = new google.maps.Marker({
+        position : ev.latLng,
+        map : myMap
+    });
+
+    if(prevPoint){
+        var distance = google.maps.geometry.spherical.computeDistanceBetween(prevPoint, ev.latLng);
+        var path = new google.maps.Polyline({
+            path: [prevPoint, ev.latLng],
+            map: myMap
+        });
+
+        calcRoute(prevPoint, ev.latLng);
+        
+        google.maps.event.addListener(path, 'click', function(e){
+            var infoWin = new google.maps.InfoWindow();
+            infoWin.setContent(
+                "Distance : " + Math.floor(distance/1000) + " Km"
+            );
+            infoWin.setPosition(e.latLng);
+            infoWin.open(myMap);
+        });
+    }
+
+    prevPoint = ev.latLng;
+
+    google.maps.event.addListener(mark, 'click', function(e){
+        var infoWin = new google.maps.InfoWindow();
+        infoWin.setContent(
+            "Lat : " 
+            + e.latLng.lat()
+            + "<br/> "
+            + "Lng : " 
+            + e.latLng.lng()
+        );
+        infoWin.setPosition(e.latLng);
+        infoWin.open(myMap);
+    });
+}
+
+function calcRoute(origin, destination){
+    var request = {
+        origin: origin,
+        destination: destination,
+        provideRouteAlternatives: true,
+        travelMode: google.maps.TravelMode["DRIVING"]
+    };
+
+    directionsService.route(request, function(response, status){
+        if(status == 'OK'){
+            console.log(response);
+            directionsRenderer.setDirections(response);
+        }
+    })
+}
+
+
+/*$(function(){
+    $.ajax({
+        url:'https://maps.googleapis.com/maps/api/directions/json?origin=niketon,dhaka&destination=dhanmondi,dhaka&key=AIzaSyDtjdXPLi6TDlviVju8oJbreQOUnHQv0Cg',
+        contentType: "application/json",
+        success: function(response){
+            console.log(response.status);
+        }
+    })
+});*/
+
+/*$.ajax({
+url:'https://maps.googleapis.com/maps/api/directions/json?origin=niketon,dhaka&destination=dhanmondi,dhaka&key=AIzaSyDtjdXPLi6TDlviVju8oJbreQOUnHQv0Cg',
+contentType: "application/json",
+success: function(result){
+console.log(result.status);
+}});*/
+
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9z8Yeds2F2TVPmv8TnE37aAsecNmxoHc&libraries=geometry&callback=showMap"></script>
+
+</body>
+</html>
